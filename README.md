@@ -1,9 +1,15 @@
 # 成为一个更好的Java程序员
-这是一个成为更好的 `Java 程序员`的系列教程
+这是一个成为更好的 `Java 程序员`的系列教程（微信搜索：程序员cxuan）
 
->声明：这是完全手写的仓库，不严谨的地方请告知作者。
+>声明：这是完全手写的仓库，不严谨的地方请提出 ISSUE 或者 PR，作者会及时处理。
 >
->此项目无法和 Dubbo 等开源框架相提并论，请读者不要盲目崇拜，此项目只是作者近来的读书、学习笔记总结。如果你 `star` 一下我会很高兴的。
+>此项目无法和 Dubbo 等开源框架相提并论，请读者不要盲目崇拜，此项目只是作者近来的读书、学习笔记总结。
+>
+>如果你 star 一下我会高兴一整天；
+>
+>如果你 fork 一下我会高兴一周；
+>
+>如果你 star + fork 我会爱上你的。
 >
 >**本仓库仅供学习使用，商业用途请联系作者 (微信： lx252279279 )**
 
@@ -100,10 +106,17 @@
 * [一文了解 DNS 协议](https://github.com/crisxuan/bestJavaer/blob/master/computer-network/network-dns.md)
 * [一文了解 ICMP 协议](https://github.com/crisxuan/bestJavaer/blob/master/computer-network/network-icmp.md)
 * [一文了解 DHCP 协议](https://github.com/crisxuan/bestJavaer/blob/master/computer-network/network-dhcp.md)
+* [一文了解 NAT 协议](https://github.com/crisxuan/bestJavaer/blob/master/computer-network/network-nat.md)
 * [Web 页面的请求流程，超详细](https://github.com/crisxuan/bestJavaer/blob/master/computer-network/web-request.md)
-* [TCP 连接管理](https://github.com/crisxuan/bestJavaer/blob/master/computer-network/network-tcp-connect.md)
+* [什么是 Socket](https://github.com/crisxuan/bestJavaer/blob/master/computer-network/network-socket.md)
+* [一文了解路由选择协议](https://github.com/crisxuan/bestJavaer/blob/master/computer-network/network-routerchoose.md)
+* [一文了解 HTTP/2.0](https://github.com/crisxuan/bestJavaer/blob/master/computer-network/network-http2.0.md)
+* [一文了解 QUIC 协议](https://github.com/crisxuan/bestJavaer/blob/master/computer-network/network-quic.md)
+* [一文了解 HTTP/3.0](https://github.com/crisxuan/bestJavaer/blob/master/computer-network/network-http3.0.md)
 * [计算机网络自学指南](https://github.com/crisxuan/bestJavaer/blob/master/computer-network/computer-howtolearn.md)
-* [计算机网络核心概念](https://github.com/crisxuan/bestJavaer/blob/master/computer-network/network-concept.md)
+* [计算机网络核心概念](https://github.com/crisxuan/bestJavaer/blob/master/computer-network/network-concepts.md)
+* [计算机网络发展史](https://github.com/crisxuan/bestJavaer/blob/master/computer-network/network-history.md)
+* [学计算机网络，看计算机自顶向下好还是谢希仁的计算机好](https://github.com/crisxuan/bestJavaer/blob/master/computer-network/network-choose.md)
 
 ## Java 基础系列👍
 
@@ -181,7 +194,6 @@
 * [全面了解 HTTPS](https://github.com/crisxuan/bestJavaer/blob/master/http/http-https.md)
 * [全面了解 Cookies、Session 和 Token](https://github.com/crisxuan/bestJavaer/blob/master/http/http-cookesessiontoken.md)
 * [图解 HTTP 连接管理](https://github.com/crisxuan/bestJavaer/blob/master/http/http-manageconnection.md)
-* [HTTP 2.0]()
 
 ## Linux 系列
 
@@ -211,6 +223,7 @@
 
 * [C 语言基础入门](https://github.com/crisxuan/bestJavaer/blob/master/cprograming/c-basic.md)
 * [C 语言数据](https://github.com/crisxuan/bestJavaer/blob/master/cprograming/c-data.md)
+* [C 函数与程序控制](https://github.com/crisxuan/bestJavaer/blob/master/cprograming/c-function.md)
 
 ## MyBatis
 
@@ -347,6 +360,9 @@ TODO
 * [写给 25 岁的自己](https://github.com/crisxuan/bestJavaer/blob/master/aboutlife/cxuan-25yearsold.md)
 * [面试官和面试者在同一个群里是怎样的体验](https://github.com/crisxuan/bestJavaer/blob/master/aboutlife/interviewer-story.md)
 * [程序员的水平能有多低？](https://github.com/crisxuan/bestJavaer/blob/master/aboutlife/cxuan-lowprogrammer.md)
+* [自媒体技术的困境](https://github.com/crisxuan/bestJavaer/blob/master/aboutlife/selfmedia-difficult.md)
+* [cxuan 结婚啦！！！](https://github.com/crisxuan/bestJavaer/blob/master/aboutlife/cxuan-marrige.md)
+* [cxuan 国庆的躺平经历](https://github.com/crisxuan/bestJavaer/blob/master/aboutlife/cxuan-nationalday.md)
 
 ## 程序员
 
@@ -359,8 +375,8 @@ TODO
 ## 书籍观后感
 
 * [如何评价《Java 并发编程艺术》这本书？](https://github.com/crisxuan/bestJavaer/blob/master/book-view/read-theArtOfJavaConcurrencyProgramming.md)
-
-
+* [如何评价《On Java 中文版》这本书？](https://github.com/crisxuan/bestJavaer/blob/master/book-view/read-onJava.md)
+* [《CSAPP》是一本什么书？](https://github.com/crisxuan/bestJavaer/blob/master/book-view/read-csapp.md)
 
 ## 内推计划
 

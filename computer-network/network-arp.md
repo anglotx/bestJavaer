@@ -13,21 +13,35 @@
       * [ARP 攻击分类](#arp-攻击分类)
    * [总结](#总结)
 
+> 这是计算机网络连载系列的第七篇文章，前六篇文章见
+>
+> [计算机网络基础知识总结](https://mp.weixin.qq.com/s?__biz=MzI0ODk2NDIyMQ==&mid=2247486242&idx=1&sn=fac49b0b79515a5ed6afd4b341aff87b&chksm=e999fe30deee772637e1c52fb9001c60e60a772e7adba6701329c81974e76c57bb7b2e570225&token=850264305&lang=zh_CN#rd)
+>
+> [TCP/IP 基础知识总结](https://mp.weixin.qq.com/s?__biz=MzI0ODk2NDIyMQ==&mid=2247486408&idx=1&sn=c332ae7ae448f3eb98865003ecade589&chksm=e999fedadeee77cc6281d1b170bd906b58220d6cd83054bc741821f4167f1f18ceee9ba0e449&token=850264305&lang=zh_CN#rd)
+>
+> [计算机网络应用层](https://mp.weixin.qq.com/s?__biz=MzI0ODk2NDIyMQ==&mid=2247486507&idx=1&sn=622cc363b34bce54f4953076faa1cad6&chksm=e999f939deee702f2444df83ad9805de8c70fb88b89d299fdf0a82b3463e253f32372963c039&token=1398464113&lang=zh_CN#rd)
+>
+> [计算机网络传输层](https://mp.weixin.qq.com/s?__biz=MzI0ODk2NDIyMQ==&mid=2247487108&idx=1&sn=7b47f421bb1dee4edb357a10399b7fec&chksm=e999fb96deee7280a17bfff44c27ef11a60e93e48f9da738670a779ecf6accb5a6a4ebd3cbcc&token=1398464113&lang=zh_CN#rd)
+>
+> [计算机网络网络层](https://mp.weixin.qq.com/s?__biz=MzI0ODk2NDIyMQ==&mid=2247487683&idx=1&sn=e0949e72e039759545450852d8bc0ada&chksm=e999e5d1deee6cc7ab9e42b50329924fee39c45955516b406046605d27928825a0f628d13e7c&token=1398464113&lang=zh_CN#rd)
+>
+> [计算机网络链路层](https://mp.weixin.qq.com/s?__biz=MzI0ODk2NDIyMQ==&mid=2247488884&idx=1&sn=0fdb91b7f5081d2e24c82d891fcc6126&chksm=e999e066deee69704d162b97be2ff0d33225fa9a3d12e4d3bec90a34996e7db7134535f36e8e&token=1398464113&lang=zh_CN#rd)
+
 只要确定了 IP 地址后，就能够向这个 IP 地址所在的主机发送数据报，这是我们所熟知的事情。但是再往深了想，IP 地址只是标识网络层的地址，那么在网络层下方数据链路层是不是也有一个地址能够告诉对方主机自己的地址呢？是的，这个地址就是`MAC 地址`。
 
 ## 认识 MAC 地址
 
-MAC 地址的全称是 `Media Access Control Address`，译为媒体访问控制地址，它是网络上以太网或网络适配器的唯一标识符。MAC 地址能够区分不同的网络接口，并用于多种网络技术，尤其是大多数 IEEE 802 网络。
+MAC 地址的全称是 *Media Access Control Address*，译为媒体访问控制地址，它是网络上以太网或网络适配器的唯一标识符。MAC 地址能够区分不同的网络接口，并用于多种网络技术，尤其是大多数 IEEE 802 网络。
 
-> MAC 地址也称为物理地址，硬件地址和老化地址。
+> MAC 地址也称为物理地址，硬件地址和老化地址，最常使用的就是物理地址。
 
 MAC 地址主要用于识别数据链路中互联的节点，如下图所示
 
-![](https://s3.ax1x.com/2021/01/09/sMDE24.png)
+![](http://www.cxuan.vip/image-20230123221903141.png)
 
 MAC 地址长 48 bit，在使用`网卡(NIC)` 的情况下，MAC 地址一般都会烧入 ROM 中。因此，任何一个网卡的 MAC 地址都是唯一的。MAC 地址的结构如下
 
-![](https://s3.ax1x.com/2021/01/09/sMDAGF.png)
+![](http://www.cxuan.vip/image-20230123221956420.png)
 
 MAC 地址中的 3 - 24 位表示厂商识别码，每个 NIC 厂商都有特定唯一的识别数字。25 - 48 位是厂商内部为识别每个网卡而用。因此，可以保证全世界不会有相同 MAC 地址的网卡。
 
@@ -45,15 +59,15 @@ ARP 协议的全称是 `Address Resolution Protocol(地址解析协议)`，它�
 
 下面我们探讨一下 ARP 的工作机制是怎样的。假设 A 和 B 位于同一链路，不需要经过路由器的转换，主机 A 向主机 B 发送一个 IP 分组，主机 A 的地址是 192.168.1.2 ，主机 B 的地址是 192.168.1.3，它们都不知道对方的 MAC 地址是啥，主机 C 和 主机 D 是同一链路的其他主机。
 
-![](https://s3.ax1x.com/2021/01/09/sMDkPU.png)
+![](http://www.cxuan.vip/image-20230123222019804.png)
 
-主机 A 想要获取主机 B 的 MAC 地址，通过主机 A 会通过`广播` 的方式向以太网上的所有主机发送一个 `ARP 请求包`，这个 ARP 请求包中包含了主机 A 想要知道的主机 B 的 IP 地址的 MAC 地址。
+主机 A 想要获取主机 B 的 MAC 地址，通过主机 A 会通过广播的方式向以太网上的所有主机发送一个 ARP 请求包，这个 ARP 请求包中包含了主机 A 想要知道的主机 B 的 IP 地址的 MAC 地址。
 
-![](https://s3.ax1x.com/2021/01/09/sMDVxJ.png)
+![](http://www.cxuan.vip/image-20230123222051848.png)
 
-主机 A 发送的 ARP 请求包会被同一链路上的所有主机/路由器接收并进行解析。每个主机/路由器都会检查 ARP 请求包中的信息，如果 ARP 请求包中的`目标 IP 地址` 和自己的相同，就会将自己主机的 MAC 地址写入响应包返回主机 A
+主机 A 发送的 ARP 请求包会被同一链路上的所有主机/路由器接收并进行解析。每个主机/路由器都会检查 ARP 请求包中的信息，如果 ARP 请求包中的目标 IP 地址和自己的相同，就会将自己主机的 MAC 地址写入响应包返回主机 A。
 
-![](https://s3.ax1x.com/2021/01/09/sMDi5T.png)
+![](http://www.cxuan.vip/image-20230123222147069.png)
 
 由此，可以通过 ARP 从 IP 地址获取 MAC 地址，实现同一链路内的通信。
 
@@ -65,23 +79,21 @@ ARP 协议的全称是 `Address Resolution Protocol(地址解析协议)`，它�
 
 现在你知道了发送一次 IP 分组前通过发送一次 ARP 请求就能够确定 MAC 地址。那么是不是每发送一次都得经过广播 -> 封装 ARP 响应 -> 返回给主机这一系列流程呢？
 
-想想看，浏览器是如何做的呢？浏览器内置了缓存能够缓存你最近经常使用的地址，那么 ARP 也是一样的。ARP 高效运行的关键就是维护每个主机和路由器上的 `ARP 缓存(或表)`。这个缓存维护着每个 IP 到 MAC 地址的映射关系。通过把第一次 ARP 获取到的 MAC 地址作为 IP 对 MAC 的映射关系到一个 ARP 缓存表中，下一次再向这个地址发送数据报时就不再需要重新发送 ARP 请求了，而是直接使用这个缓存表中的 MAC 地址进行数据报的发送。每发送一次 ARP 请求，缓存表中对应的映射关系都会被清除。
+想想看，浏览器是如何做的呢？浏览器内置了缓存能够缓存你最近经常使用的地址，那么 ARP 也是一样的。ARP 高效运行的关键就是维护每个主机和路由器上的 ARP 缓存(或表)。这个缓存维护着每个 IP 到 MAC 地址的映射关系。通过把第一次 ARP 获取到的 MAC 地址作为 IP 对 MAC 的映射关系到一个 ARP 缓存表中，下一次再向这个地址发送数据报时就不再需要重新发送 ARP 请求了，而是直接使用这个缓存表中的 MAC 地址进行数据报的发送。每发送一次 ARP 请求，缓存表中对应的映射关系都会被清除。
 
 通过 ARP 缓存，降低了网络流量的使用，在一定程度上防止了 ARP 的大量广播。
 
-![](https://s3.ax1x.com/2021/01/09/sMDmrR.png)
+![](http://www.cxuan.vip/image-20230123222215609.png)
 
 一般来说，发送过一次 ARP 请求后，再次发送相同请求的几率比较大，因此使用 ARP 缓存能够减少 ARP 包的发送，除此之外，不仅仅 ARP 请求的发送方能够缓存 ARP 接收方的 MAC 地址，接收方也能够缓存 ARP 请求方的 IP 和 MAC 地址，如下所示
 
-![](https://s3.ax1x.com/2021/01/09/sMDnq1.png)
+![](http://www.cxuan.vip/image-20230123222245019.png)
 
 不过，**MAC 地址的缓存有一定期限，超过这个期限后，缓存的内容会被清除**。
 
-我们可以在 Linux 或者 Windows 中使用 arp 命令查看 ARP 缓存。选项 -a 用于显示两个系统缓存中所有的缓存项。
+我们可以在 Linux 或者 Windows 中使用 arp 命令查看 ARP 缓存。选项 -a 用于显示两个系统缓存中所有的缓存项。在 Linux 中使用 arp 查询缓存：
 
-在 Linux 中使用 arp 查询缓存
-
-![](https://s3.ax1x.com/2021/01/09/sMDeM9.png)
+![](http://www.cxuan.vip/image-20230123222331630.png)
 
 主要包含五项
 
@@ -91,11 +103,11 @@ ARP 协议的全称是 `Address Resolution Protocol(地址解析协议)`，它�
 * 标志
 * 本地网络接口
 
-标志主要分为`三类`: C 、M 或 P，C 表示的是由 ARP 协议动态学习。M 类可以通过 arp -s 增加一条。P 类表示的是 `发布`，对于任何 P 类项目，主机对输入的 ARP 请求都返回一个 ARP 响应。这个选项用于配置代理 ARP。
+标志主要分为三类: C 、M 或 P，C 表示的是由 ARP 协议动态学习。M 类可以通过 arp -s 增加一条。P 类表示的是发布，对于任何 P 类项目，主机对输入的 ARP 请求都返回一个 ARP 响应。这个选项用于配置代理 ARP。
 
-比如我们在 Windows 中进行 ARP 缓存查询
+比如我们在 Windows 中可以使用 arp -a 进行缓存查询（arp -a 用于查询计算机中的 ARP 缓存表）
 
-<img src="https://s3.ax1x.com/2021/01/09/sMDKVx.png" style="zoom:50%;" />
+![](http://www.cxuan.vip/image-20230123222356447.png)
 
 Windows 中的 ARP 程序显示了 IPv4 的地址，它的接口是十六进制数，Windows 版本还指出地址是手动输入还是 ARP 动态学习的。在上面的例子中，既有静态的也有动态的。48 位的 MAC 地址被显示为 6 个十六进制数，在 Linux 中使用 `:` 号，在 Windows 中使用 `-` 进行分隔。
 
@@ -103,7 +115,7 @@ Windows 中的 ARP 程序显示了 IPv4 的地址，它的接口是十六进制�
 
 我们上面说到，ARP 对想要知道 MAC 地址的目标主机会首先发送 ARP 请求，那么这个请求中都携带哪些信息呢？下面 cxuan 就来和你聊一下。下面是在以太网中转换一个 IPv4 的地址常用的 ARP 请求或响应的报文格式。
 
-![](https://s3.ax1x.com/2021/01/09/sMDMa6.png)
+![](http://www.cxuan.vip/image-20230123222448334.png)
 
 前面 14 个字节构成标准以太网的首部，前两个字段 DST 和 SRC 分别表示 `以太网的目的地址` 和 `以太网的源地址`，以太网的目的地址如果是 `ff:ff:ff:ff:ff:ff` 全部为 1 表示广播地址，在同一广播域中的所有以太网接口可以接收这些帧。后面紧跟着的是 ARP 请求的长度/类型，ARP 请求 和 ARP 应答这个值为 `0x0806`。
 
@@ -121,23 +133,23 @@ Windows 中的 ARP 程序显示了 IPv4 的地址，它的接口是十六进制�
 
 [https://www.wireshark.org/download.html](https://links.jianshu.com/go?to=https%3A%2F%2Fwww.wireshark.org%2Fdownload.html)
 
-![](https://s3.ax1x.com/2021/01/09/sMDQIK.png)
+![](http://www.cxuan.vip/image-20230123222516031.png)
 
-下载完成后阅读安装说明的手册，阅读后会发现需要安装两个插件，根据提示安装即可，然后我们打开 WireShark ，开始报文拦截，下面是我解惑的 ARP 数据包
+下载完成后阅读安装说明的手册，阅读后会发现需要安装两个插件，根据提示安装即可，然后我们打开 WireShark ，开始报文拦截，下面是我截获的 ARP 数据包。
 
-![](https://s3.ax1x.com/2021/01/09/sMD1PO.png)
+![](http://www.cxuan.vip/image-20230123222528036.png)
 
 这款软件很好的一个地方是对不同的数据包会有不同的颜色标识，这点非常好。
 
 然后我们查看 ARP 请求
 
-![](https://s3.ax1x.com/2021/01/09/sMDGxH.png)
+![](http://www.cxuan.vip/image-20230123222541506.png)
 
 可以看到，这就是一个完整的 ARP 请求包，我们使用的硬件类型是以太网，协议类型是 IPv4 ，默认值是 0x0800，然后硬件大小是 6 个字节，协议大小占用 2 个字节，Op 的全称是 Opcode ，Op = 1 表示这是一个 ARP 请求，然后是发送方的硬件地址和协议地址，接收方的硬件地址和协议地址。
 
 ARP 响应如下
 
-![](https://s3.ax1x.com/2021/01/09/sMDtsA.png)
+![](http://www.cxuan.vip/image-20230123222554476.png)
 
 可以看到 Op = 2，表示这是 ARP 响应。
 
@@ -145,7 +157,7 @@ ARP 响应如下
 
 使用 `tcpdump -i ens33` 可以打印出在 ens33 地址下的数据包，下面是我截取的 ARP 数据包。
 
-![](https://s3.ax1x.com/2021/01/09/sMDNqI.png)
+![](http://www.cxuan.vip/image-20230123222608333.png)
 
 更多关于 tcpdump 的用法，你可以参考这篇博客
 
@@ -159,19 +171,19 @@ https://www.cnblogs.com/ggjucheng/archive/2012/01/14/2322659.html
 
 ## RARP
 
-与 ARP 相对的，`RARP(Reverse Address Resolution Protocol)` 是将 ARP 反过来，从 MAC 地址定位 IP 地址的一种协议，将打印机服务器等小型嵌入式设备接入网络时会使用到。
+与 ARP 相对的，**RARP(Reverse Address Resolution Protocol)** 是将 ARP 反过来，从 MAC 地址定位 IP 地址的一种协议，将打印机服务器等小型嵌入式设备接入网络时会使用到。
 
-![](https://s3.ax1x.com/2021/01/09/sMD8Re.png)
+![](http://www.cxuan.vip/image-20230123222631195.png)
 
 平常我们设置 IP 地址一般会有两种方式，`手动设置` 和 `DHCP 动态获取`
 
-![](https://s3.ax1x.com/2021/01/09/sMDaZt.png)
+![](http://www.cxuan.vip/image-20230123222702786.png)
 
 但是对于嵌入式设备来说，它没有任何输入接口，也无法通过 DHCP 获取动态地址。
 
 在这种情况下，就要使用到 RARP 了，你需要准备一个 RARP 服务器，在这个服务器上注册设备的 MAC 地址和 IP 地址，然后将设备接入网络，设备会发出一条 IP 和 MAC 地址的查询请求给服务器，服务器会告诉设备其 IP 地址和 MAC 地址。
 
-![](https://s3.ax1x.com/2021/01/09/sMDYMd.png)
+![](http://www.cxuan.vip/image-20230123222721444.png)
 
 ## ARP 攻击
 
@@ -191,15 +203,8 @@ ARP 主要攻击方式分为下面这几种
 
 ARP 是 TCP/IP 实现中的一个基本协议，它通常在应用程序或用户没有察觉到的情况下运行。ARP 可以用于映射 IP 地址为 MAC 地址。
 
-**这篇文章我们主要讲了 ARP 的基本原理，ARP 的帧结构，ARP 的工作机制，以及 ARP 代理、ARP 攻击、RARP 和 ARP 的区别**等。
+这篇文章我们主要讲了 ARP 的基本原理，ARP 的帧结构，ARP 的工作机制，以及 ARP 代理、ARP 攻击、RARP 和 ARP 的区别等。
 
-![image-20210717083948590](https://tva1.sinaimg.cn/large/008i3skNly1gsjnhb9f5xj319s0tsn4g.jpg)
+如果你在阅读文章的过程中发现错误和问题，请及时与我联系！
 
-![image-20210717084050334](https://tva1.sinaimg.cn/large/008i3skNly1gsjnidv1r3j315s0fs40g.jpg)
-
-
-
-
-
-
-
+如果文章对你有帮助，希望小伙伴们三连走起！
